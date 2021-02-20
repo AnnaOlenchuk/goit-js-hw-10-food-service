@@ -1,3 +1,3 @@
 import './styles.css';
-import './theme';
-import './cards';
+import './js/theme';
+import './js/cards';

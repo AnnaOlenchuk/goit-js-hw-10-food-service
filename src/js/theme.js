@@ -10,6 +10,11 @@ themeSwitchRef.addEventListener('change', switchTheme);
 setDefaultTheme();
 checkDarkTheme();
 
+function updateTheme(fromTheme, toTheme) {
+    document.body.classList.replace(Theme[fromTheme], Theme[toTheme]);
+    localStorage.setItem('theme', JSON.stringify(Theme[toTheme]));
+}
+
 // Set default theme
 function setDefaultTheme() {
     document.body.classList.add(Theme.LIGHT);
@@ -25,30 +30,20 @@ function setDefaultTheme() {
 // Switching theme
 // function switchTheme(event) {
 //     if (event.target.checked) {
-//         document.body.classList.replace(Theme.LIGHT, Theme.DARK);
-//         localStorage.setItem('theme', JSON.stringify(Theme.DARK));
+//         updateTheme(Theme.LIGHT, Theme.DARK);
 //     } else {
-//         document.body.classList.replace(Theme.DARK, Theme.LIGHT);
-//         localStorage.setItem('theme', JSON.stringify(Theme.LIGHT));
+//         updateTheme(Theme.DARK, Theme.LIGHT);
 //     }
 // };
 
 // alternative theme switching
 function switchTheme(event) {
     if (event.target.checked) {
-        setDark()
+        updateTheme(Theme.LIGHT, Theme.DARK);
     } else {
-        setLight()
+        updateTheme(Theme.DARK, Theme.LIGHT);
     }
 };
-function setDark() { 
-document.body.classList.replace(Theme.LIGHT, Theme.DARK);
- localStorage.setItem('theme', JSON.stringify(Theme.DARK));
-}
-function setLight() {
-document.body.classList.replace(Theme.DARK, Theme.LIGHT);
-localStorage.setItem('theme', JSON.stringify(Theme.LIGHT));
-}
 
 // Check if the theme is dark
 function checkDarkTheme() {
